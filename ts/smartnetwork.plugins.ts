@@ -1,7 +1,4 @@
-let speedtestNet = require('speedtest-net')
-import * as smartq from 'smartq'
+let speedtestNet = require('speedtest-net');
+import * as smartpromise from '@pushrocks/smartpromise';
 
-export {
-  speedtestNet,
-  smartq
-}
+export { speedtestNet, smartpromise };

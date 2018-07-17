@@ -1,17 +1,21 @@
-import { expect, tap } from 'tapbundle'
-import * as smartnetwork from '../ts/index'
+import { expect, tap } from '@pushrocks/tapbundle';
+import * as smartnetwork from '../ts/index';
 
-let testSmartNetwork: smartnetwork.SmartNetwork
+let testSmartNetwork: smartnetwork.SmartNetwork;
 
 tap.test('should create a valid instance of SmartNetwork', async () => {
-  testSmartNetwork = new smartnetwork.SmartNetwork()
-  expect(testSmartNetwork).to.be.instanceOf(smartnetwork.SmartNetwork)
-})
+  testSmartNetwork = new smartnetwork.SmartNetwork();
+  expect(testSmartNetwork).to.be.instanceOf(smartnetwork.SmartNetwork);
+});
 
 tap.test('should perform a speedtest', async () => {
-  let result = await testSmartNetwork.getSpeed()
-  console.log(`Download speed for this instance is ${result.speeds.download}`)
-  console.log(`Upload speed for this instance is ${result.speeds.upload}`)
-})
+  let result = await testSmartNetwork.getSpeed();
+  console.log(`Download speed for this instance is ${result.speeds.download}`);
+  console.log(`Upload speed for this instance is ${result.speeds.upload}`);
+});
 
-tap.start()
+tap.test('should determine wether a port is free', async () => {
+  await expect(testSmartNetwork.isLocalPortAvailable(8080)).to.eventually.be.true;
+});
+
+tap.start();
