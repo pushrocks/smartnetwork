@@ -108,9 +108,7 @@ export class SmartNetwork {
   public async isRemotePortAvailable(domainArg: string, portArg?: number): Promise<boolean> {
     const done = plugins.smartpromise.defer<boolean>();
     const domainPart = domainArg.split(':')[0];
-    const port = (() => {
-      return portArg ? portArg : parseInt(domainArg.split(':')[1], 10);
-    })()
+    const port = portArg ? portArg : parseInt(domainArg.split(':')[1], 10);
 
     plugins.portscanner.checkPortStatus(port, domainPart, (err, status ) => {
       if (err) {
