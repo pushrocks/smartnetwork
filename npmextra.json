@@ -4,5 +4,15 @@
       "npmts"
     ],
     "npmAccessLevel": "public"
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "pushrocks",
+      "gitrepo": "smartnetwork",
+      "shortDescription": "network diagnostics",
+      "npmPackagename": "@pushrocks/smartnetwork",
+      "license": "MIT"
+    }
   }
 }
