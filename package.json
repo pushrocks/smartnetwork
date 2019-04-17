@@ -8,12 +8,15 @@
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
-    "test": "(tsrun test/test.ts)",
-    "build": "(npmts)"
+    "test": "(tsrun test/)",
+    "build": "(tsbuild)"
   },
   "devDependencies": {
-    "@gitzone/tsrun": "^1.2.5",
-    "@pushrocks/tapbundle": "^3.0.9"
+    "@gitzone/tsbuild": "^2.1.8",
+    "@gitzone/tstest": "^1.0.20",
+    "@pushrocks/tapbundle": "^3.0.9",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
     "@pushrocks/smartpromise": "^3.0.2",
