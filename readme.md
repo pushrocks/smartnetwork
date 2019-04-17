@@ -20,8 +20,18 @@ network diagnostics
 
 ```typescript
 import * as smartnetwork from 'smartnetwork';
-testSmartNetwork = new smartnetwork.SmartNetwork();
-testSmartNetwork.getSpeed
+const testSmartNetwork = new smartnetwork.SmartNetwork();
+const run = async () => {
+
+  // measure average speed over a period of 5 seconds
+  // the structure of speedResult is self explanatory using TypeScript (or the linked TypeDoc above)
+  const speedResult = testSmartNetwork.getSpeed(5000)
+
+  //
+  const isLocalPortAvailable: boolean = await testSmartNetwork.isLocalPortAvailable(1234);
+  const isRemotePortAvailable: boolean = await testSmartNetwork.isRemotePortAvailable('google.com:80');
+  const isRemotePortAvailable: boolean = await testSmartNetwork.isRemotePortAvailable('google.com', 80);
+}
 ```
 
 For further information read the linked docs at the top of this readme.

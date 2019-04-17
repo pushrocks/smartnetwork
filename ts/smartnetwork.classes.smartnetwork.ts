@@ -1,6 +1,6 @@
 import * as plugins from './smartnetwork.plugins';
 
-export class ISpeedtestData {
+export interface ISpeedtestData {
   speeds: {
     download: number;
     upload: number;
@@ -112,12 +112,13 @@ export class SmartNetwork {
 
     plugins.portscanner.checkPortStatus(port, domainPart, (err, status ) => {
       if (err) {
-        throw err;
+        console.log(err);
+        return done.resolve(false);
       }
       if (status === 'open') {
         done.resolve(true);
       } else {
-        done.resolve(false)
+        done.resolve(false);
       }
     })
     const result = await done.promise;
