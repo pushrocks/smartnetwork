@@ -1,2 +1,1 @@
-export * from './smartnetwork.classes.portscanner';
-export * from './smartnetwork.classes.speedtest';
+export * from './smartnetwork.classes.smartnetwork';
