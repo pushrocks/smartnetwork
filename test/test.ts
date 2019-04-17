@@ -20,6 +20,7 @@ tap.test('should determine wether a port is free', async () => {
 
 tap.test('should scan a port', async () => {
   await expect(testSmartNetwork.isRemotePortAvailable('google.com:80')).to.eventually.be.true;
+  await expect(testSmartNetwork.isRemotePortAvailable('google.com', 80)).to.be.eventually.true;
   await expect(testSmartNetwork.isRemotePortAvailable('67.207.79.63:12346')).to.eventually.be.false;
 });
 

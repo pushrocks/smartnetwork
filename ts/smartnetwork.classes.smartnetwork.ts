@@ -112,7 +112,7 @@ export class SmartNetwork {
 
     plugins.portscanner.checkPortStatus(port, domainPart, (err, status ) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         return done.resolve(false);
       }
       if (status === 'open') {
