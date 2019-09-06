@@ -36,8 +36,12 @@ export interface ISpeedtestData {
  * SmartNetwork simplifies actions within the network
  */
 export class SmartNetwork {
-  async getSpeed(measurementTime = 5000): Promise<ISpeedtestData> {
-    let done = plugins.smartpromise.defer<ISpeedtestData>();
+  /**
+   * get network speed
+   * @param measurementTime
+   */
+  public async getSpeed(measurementTime = 5000): Promise<ISpeedtestData> {
+    const done = plugins.smartpromise.defer<ISpeedtestData>();
     const test = plugins.speedtestNet({ maxTime: measurementTime });
     test.on('data', data => {
       done.resolve(data);
@@ -53,21 +57,21 @@ export class SmartNetwork {
    * note: false also resolves with false as argument
    * @param port
    */
-  async isLocalPortAvailable(port: number): Promise<boolean> {
+  public async isLocalPortAvailable(port: number): Promise<boolean> {
     const doneIpV4 = plugins.smartpromise.defer<boolean>();
     const doneIpV6 = plugins.smartpromise.defer<boolean>();
     const net = await import('net'); // creates only one instance of net ;) even on multiple calls
 
     // test IPv4 space
     const ipv4Test = net.createServer();
-    ipv4Test.once('error', function(err: any) {
+    ipv4Test.once('error', (err: any) => {
       if (err.code !== 'EADDRINUSE') {
         doneIpV4.resolve(false);
         return;
       }
       doneIpV4.resolve(false);
     });
-    ipv4Test.once('listening', function() {
+    ipv4Test.once('listening', () => {
       ipv4Test.once('close', () => {
         doneIpV4.resolve(true);
       });
@@ -78,21 +82,21 @@ export class SmartNetwork {
     await doneIpV4.promise;
 
     // test IPv6 space
-    const test_ipv6 = net.createServer();
-    test_ipv6.once('error', function(err: any) {
+    const ipv6Test = net.createServer();
+    ipv6Test.once('error', function(err: any) {
       if (err.code !== 'EADDRINUSE') {
         doneIpV6.resolve(false);
         return;
       }
       doneIpV6.resolve(false);
     });
-    test_ipv6.once('listening', function() {
-      test_ipv6.once('close', () => {
+    ipv6Test.once('listening', () => {
+      ipv6Test.once('close', () => {
         doneIpV6.resolve(true);
       });
-      test_ipv6.close();
+      ipv6Test.close();
     });
-    test_ipv6.listen(port, '::');
+    ipv6Test.listen(port, '::');
 
     // lets wait for the result
     const resultIpV4 = await doneIpV4.promise;
@@ -110,7 +114,7 @@ export class SmartNetwork {
     const domainPart = domainArg.split(':')[0];
     const port = portArg ? portArg : parseInt(domainArg.split(':')[1], 10);
 
-    plugins.portscanner.checkPortStatus(port, domainPart, (err, status ) => {
+    plugins.portscanner.checkPortStatus(port, domainPart, (err, status) => {
       if (err) {
         // console.log(err);
         return done.resolve(false);
@@ -120,8 +124,16 @@ export class SmartNetwork {
       } else {
         done.resolve(false);
       }
-    })
+    });
     const result = await done.promise;
+    return result;
+  }
+
+  public async getDefaultGateway() {
+    const result =  {
+      v4: await plugins.defaultGateway.v4(),
+      v6: await plugins.defaultGateway.v6()
+    };
     return result;
   }
 }

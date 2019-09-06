@@ -12,17 +12,30 @@
     "build": "(tsbuild)"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.1.8",
-    "@gitzone/tstest": "^1.0.20",
-    "@pushrocks/tapbundle": "^3.0.9",
-    "tslint": "^5.16.0",
+    "@gitzone/tsbuild": "^2.1.17",
+    "@gitzone/tstest": "^1.0.24",
+    "@pushrocks/tapbundle": "^3.0.13",
+    "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
     "@pushrocks/smartpromise": "^3.0.2",
     "@pushrocks/smartstring": "^3.0.10",
+    "@types/default-gateway": "^3.0.0",
     "@types/portscanner": "^2.1.0",
+    "default-gateway": "^5.0.3",
     "portscanner": "^2.2.0",
     "speedtest-net": "^1.5.1"
-  }
+  },
+  "files": [
+    "ts/*",
+    "ts_web/*",
+    "dist/*",
+    "dist_web/*",
+    "dist_ts_web/*",
+    "assets/*",
+    "cli.js",
+    "npmextra.json",
+    "readme.md"
+  ]
 }

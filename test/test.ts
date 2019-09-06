@@ -19,9 +19,14 @@ tap.test('should determine wether a port is free', async () => {
 });
 
 tap.test('should scan a port', async () => {
-  await expect(testSmartNetwork.isRemotePortAvailable('google.com:80')).to.eventually.be.true;
-  await expect(testSmartNetwork.isRemotePortAvailable('google.com', 80)).to.be.eventually.true;
-  await expect(testSmartNetwork.isRemotePortAvailable('67.207.79.63:12346')).to.eventually.be.false;
+  await expect(testSmartNetwork.isRemotePortAvailable('lossless.com:443')).to.eventually.be.true;
+  await expect(testSmartNetwork.isRemotePortAvailable('lossless.com', 443)).to.be.eventually.true;
+  // await expect(testSmartNetwork.isRemotePortAvailable('lossless.com:444')).to.eventually.be.false;
 });
+
+tap.test('should get the default gateways', async () => {
+  const gatewayResult = await testSmartNetwork.getDefaultGateway();
+  console.log(gatewayResult);
+})
 
 tap.start();
