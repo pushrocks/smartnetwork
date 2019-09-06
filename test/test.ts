@@ -27,6 +27,6 @@ tap.test('should scan a port', async () => {
 tap.test('should get the default gateways', async () => {
   const gatewayResult = await testSmartNetwork.getDefaultGateway();
   console.log(gatewayResult);
-})
+});
 
 tap.start();

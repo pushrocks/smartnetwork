@@ -130,7 +130,7 @@ export class SmartNetwork {
   }
 
   public async getDefaultGateway() {
-    const result =  {
+    const result = {
       v4: await plugins.defaultGateway.v4(),
       v6: await plugins.defaultGateway.v6()
     };
