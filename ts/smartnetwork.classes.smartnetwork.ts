@@ -133,8 +133,4 @@ export class SmartNetwork {
     const result = plugins.os.networkInterfaces();
     return result;
   }
-
-  public async getDefaultGateWay() {
-    // TOTO get default gateways
-  }
 }
