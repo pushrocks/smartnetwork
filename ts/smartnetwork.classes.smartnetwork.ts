@@ -129,11 +129,8 @@ export class SmartNetwork {
     return result;
   }
 
-  public async getDefaultGateway() {
-    const result = {
-      v4: await plugins.defaultGateway.v4(),
-      v6: await plugins.defaultGateway.v6()
-    };
+  public async getGateways() {
+    const result = plugins.os.networkInterfaces();
     return result;
   }
 }
