@@ -25,7 +25,8 @@
     "@types/portscanner": "^2.1.0",
     "default-gateway": "^5.0.3",
     "portscanner": "^2.2.0",
-    "speedtest-net": "^1.5.1"
+    "speedtest-net": "^1.5.1",
+    "systeminformation": "^4.14.8"
   },
   "files": [
     "ts/*",

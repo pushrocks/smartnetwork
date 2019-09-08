@@ -24,8 +24,13 @@ tap.test('should scan a port', async () => {
   // await expect(testSmartNetwork.isRemotePortAvailable('lossless.com:444')).to.eventually.be.false;
 });
 
-tap.test('should get the default gateways', async () => {
+tap.test('should get gateways', async () => {
   const gatewayResult = await testSmartNetwork.getGateways();
+  console.log(gatewayResult);
+});
+
+tap.test('should get the default gateway', async () => {
+  const gatewayResult = await testSmartNetwork.getDefaultGateway();
   console.log(gatewayResult);
 });
 

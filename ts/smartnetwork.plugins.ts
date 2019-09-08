@@ -12,7 +12,8 @@ import * as smartstring from '@pushrocks/smartstring';
 export { smartpromise, smartstring };
 
 // @third party scope 
-const speedtestNet = require('speedtest-net');
 import * as portscanner from 'portscanner';
+import speedtestNet from 'speedtest-net';
+import * as systeminformation from 'systeminformation';
 
-export { speedtestNet, portscanner };
+export { speedtestNet, portscanner, systeminformation };

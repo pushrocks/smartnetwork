@@ -133,4 +133,14 @@ export class SmartNetwork {
     const result = plugins.os.networkInterfaces();
     return result;
   }
+
+  public async getDefaultGateway(): Promise<{ipv4: plugins.os.NetworkInterfaceInfo, ipv6: plugins.os.NetworkInterfaceInfo}> {
+    const defaultGatewayName = await plugins.systeminformation.networkInterfaceDefault();
+    const gateways = await this.getGateways();
+    const defaultGateway = gateways[defaultGatewayName];
+    return {
+      ipv4: defaultGateway[0],
+      ipv6: defaultGateway[1]
+    };
+  }
 }
