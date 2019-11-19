@@ -134,7 +134,10 @@ export class SmartNetwork {
     return result;
   }
 
-  public async getDefaultGateway(): Promise<{ipv4: plugins.os.NetworkInterfaceInfo, ipv6: plugins.os.NetworkInterfaceInfo}> {
+  public async getDefaultGateway(): Promise<{
+    ipv4: plugins.os.NetworkInterfaceInfo;
+    ipv6: plugins.os.NetworkInterfaceInfo;
+  }> {
     const defaultGatewayName = await plugins.systeminformation.networkInterfaceDefault();
     if (!defaultGatewayName) {
       console.log('Cannot determine default gateway');
