@@ -11,7 +11,8 @@ export { smartpromise, smartstring };
 
 // @third party scope
 import * as portscanner from 'portscanner';
+import publicIp from 'public-ip';
 import speedtestNet from 'speedtest-net';
 import * as systeminformation from 'systeminformation';
 
-export { speedtestNet, portscanner, systeminformation };
+export { portscanner, publicIp, speedtestNet, systeminformation };

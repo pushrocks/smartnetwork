@@ -25,6 +25,7 @@
     "@types/portscanner": "^2.1.0",
     "default-gateway": "^5.0.5",
     "portscanner": "^2.2.0",
+    "public-ip": "^4.0.0",
     "speedtest-net": "^1.6.0",
     "systeminformation": "^4.15.3"
   },

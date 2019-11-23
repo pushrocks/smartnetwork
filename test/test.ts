@@ -34,4 +34,9 @@ tap.test('should get the default gateway', async () => {
   console.log(gatewayResult);
 });
 
+tap.test('should get public ips', async () => {
+  const ips = await testSmartNetwork.getPublicIps();
+  console.log(ips);
+});
+
 tap.start();

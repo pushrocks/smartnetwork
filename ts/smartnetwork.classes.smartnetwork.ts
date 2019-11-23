@@ -150,4 +150,13 @@ export class SmartNetwork {
       ipv6: defaultGateway[1]
     };
   }
+
+  public async getPublicIps () {
+    return {
+      v4: await plugins.publicIp.v4({
+        timeout: 1000,
+        onlyHttps: true
+      })
+    };
+  }
 }
