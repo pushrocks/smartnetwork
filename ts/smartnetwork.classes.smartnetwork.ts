@@ -114,12 +114,9 @@ export class SmartNetwork {
     const domainPart = domainArg.split(':')[0];
     const port = portArg ? portArg : parseInt(domainArg.split(':')[1], 10);
 
-    plugins.portscanner.checkPortStatus(port, domainPart, (err, status) => {
-      if (err) {
-        // console.log(err);
-        return done.resolve(false);
-      }
-      if (status === 'open') {
+    plugins.isopen(domainPart, port, (response) => {
+      console.log(response);
+      if (response[port.toString()].isOpen) {
         done.resolve(true);
       } else {
         done.resolve(false);
