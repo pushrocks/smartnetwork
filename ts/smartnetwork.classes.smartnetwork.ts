@@ -43,10 +43,10 @@ export class SmartNetwork {
   public async getSpeed(measurementTime = 5000): Promise<ISpeedtestData> {
     const done = plugins.smartpromise.defer<ISpeedtestData>();
     const test = plugins.speedtestNet({ maxTime: measurementTime });
-    test.on('data', data => {
+    test.on('data', (data) => {
       done.resolve(data);
     });
-    test.on('error', err => {
+    test.on('error', (err) => {
       done.reject(err);
     });
     return await done.promise;
@@ -83,7 +83,7 @@ export class SmartNetwork {
 
     // test IPv6 space
     const ipv6Test = net.createServer();
-    ipv6Test.once('error', function(err: any) {
+    ipv6Test.once('error', function (err: any) {
       if (err.code !== 'EADDRINUSE') {
         doneIpV6.resolve(false);
         return;
@@ -144,16 +144,16 @@ export class SmartNetwork {
     const defaultGateway = gateways[defaultGatewayName];
     return {
       ipv4: defaultGateway[0],
-      ipv6: defaultGateway[1]
+      ipv6: defaultGateway[1],
     };
   }
 
-  public async getPublicIps () {
+  public async getPublicIps() {
     return {
       v4: await plugins.publicIp.v4({
         timeout: 1000,
-        onlyHttps: true
-      })
+        onlyHttps: true,
+      }),
     };
   }
 }
